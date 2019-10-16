@@ -11,6 +11,7 @@ log = "0.4.8"
 env_logger = "0.7.0"
 futures = "0.1.29"
 libp2p = { git = "https://github.com/libp2p/rust-libp2p.git", branch = "master" }
+libp2p-secio = { git = "https://github.com/libp2p/rust-libp2p.git", branch = "master", path = "protocols/secio" }
 tokio = "0.1.22"
 
 [[bin]]
