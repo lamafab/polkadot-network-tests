@@ -7,7 +7,7 @@ use libp2p::mplex::MplexConfig;
 use libp2p::core::upgrade::SelectUpgrade;
 use libp2p::core::transport::upgrade::{Builder, Version};
 use libp2p::yamux;
-use libp2p_secio as secio;
+use libp2p_plaintext;
 
 fn main() {
     env_logger::init();
@@ -19,6 +19,6 @@ fn main() {
 
     let transport = TcpConfig::new();
     let builder = transport.upgrade(Version::V1)
-        .authenticate(secio::SecioConfig::new(id_keys));
+        .authenticate(libp2p_plaintext::PlainText2Config{local_public_key: id_keys.public()});
     let res = builder.multiplex(MplexConfig::new());
 }
